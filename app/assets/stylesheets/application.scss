@@ -14,6 +14,20 @@
  *= require_self
  */
 
+ 
+/* CSS REQUIRED */
+.state-icon {
+    left: -5px;
+}
+.list-group-item-primary {
+    color: rgb(255, 255, 255);
+    background-color: rgb(66, 139, 202);
+}
+
+/* DEMO ONLY - REMOVES UNWANTED MARGIN */
+.well .list-group {
+    margin-bottom: 0px;
+}
 
  $accent: #ff4081;
  $primary: #1976d2;
@@ -39,7 +53,7 @@
  				background: lighten(#bada55, 30%);
  			}
  		}
- 		
+
  		&.current {
  			a {
  				color: #fff;
@@ -53,6 +67,6 @@
  	display: inline-block;
  	padding: 20px;
  	background: $accent;
- 	
+
  	img { max-width: 100%; }
  }
