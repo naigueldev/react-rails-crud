@@ -6,10 +6,10 @@ var AdminPanel = React.createClass({
   }
 });
 
-React.DOM.render(
-    <AdminPanel />,
-    document.getElementById('content')
-);
+// React.DOM.render(
+//     <AdminPanel />,
+//     document.getElementById('content')
+// );
 
 
 var Navigation = React.createClass({
@@ -125,3 +125,4 @@ var Pane = React.createClass({
     );
   }
 });
+
