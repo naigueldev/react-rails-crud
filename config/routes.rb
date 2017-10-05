@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 	root to: 'site#index'
 
-	get '/*path' => 'admin#index'
+	get '/admin' => 'admin#index'
+	get '/menu' => 'menu#index'
 
 	
 	namespace :api do
