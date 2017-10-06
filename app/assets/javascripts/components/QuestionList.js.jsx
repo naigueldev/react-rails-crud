@@ -10,7 +10,7 @@ var tabList = [
 
 var Tab = React.createClass({
 	handleClick: function(e){
-		// alert("clicou");
+		alert("clicou");
 		e.preventDefault();
 		this.props.handleClick();
 	},
@@ -18,10 +18,11 @@ var Tab = React.createClass({
 	render: function(){
 		return (
 			<li className="nav-item">
-			<a className={this.props.isCurrent ? 'active nav-link' : null+" nav-link"} onClick={this.handleClick} href={this.props.url}>
+			<a className={this.props.isCurrent ? 'active nav-link' : null+" nav-link"} onClick={this.props.isCurrent ? this.handleClick : null } href={this.props.isCurrent ? this.props.url : null }>
 			{this.props.name}
 			</a>
 			</li>
+
 			);
 	}
 });
@@ -29,7 +30,7 @@ var Tab = React.createClass({
 var Tabs = React.createClass({
 	handleClick: function(tab){
 
-		// alert("this.props.currentTab = " + this.props.currentTab);
+		alert("this.props.currentTab = " + this.props.currentTab);
 		var classname = document.getElementsByClassName('question-'+this.props.currentTab);
 		var count_checked = 0;
 		for (var i = 0; i < classname.length; i++) {
@@ -90,68 +91,68 @@ var CurrentTabSelect = React.createClass({
 	render(){
 		switch(this.props.currentTab){
 			case 1: 
-				return(
-					<Content
-					title = "Title 1 question number one case"
-					option_one="option_one fóda"
-					option_two="option_two"
-					option_three="option_three"
-					option_four="option_four"
-					option_five="option_five"
-					currentTab={this.props.currentTab}
-					/>
+			return(
+				<Content
+				title = "Title 1 question number one case"
+				option_one="option_one fóda"
+				option_two="option_two"
+				option_three="option_three"
+				option_four="option_four"
+				option_five="option_five"
+				currentTab={this.props.currentTab}
+				/>
 				);
 			break; 
 			case 2: 
-				return(
-					<Content
-					title = "Title 2"
-					option_one="option_one Dois"
-					option_two=" option_two Dois"
-					option_three="option_three Dois"
-					option_four="option_four Dois"
-					option_five="option_five Dois"
-					currentTab={this.props.currentTab}
-					/>
+			return(
+				<Content
+				title = "Title 2"
+				option_one="option_one Dois"
+				option_two=" option_two Dois"
+				option_three="option_three Dois"
+				option_four="option_four Dois"
+				option_five="option_five Dois"
+				currentTab={this.props.currentTab}
+				/>
 				);
 			break; 
 			case 3: 
-				return(
-					<Content
-					title = "Title 3"
-					option_one="option_one 3"
-					option_two=" option_two 3"
-					option_three="option_three 3"
-					option_four="option_four 3"
-					option_five="option_five 3"
-					currentTab={this.props.currentTab}
-					/>
+			return(
+				<Content
+				title = "Title 3"
+				option_one="option_one 3"
+				option_two=" option_two 3"
+				option_three="option_three 3"
+				option_four="option_four 3"
+				option_five="option_five 3"
+				currentTab={this.props.currentTab}
+				/>
 				);
 			break; 
 			case 4: 
-				return(
-					<Content
-					title = "title 4"
-					option_one="option_one 4"
-					option_two="option_two 4"
-					option_three="option_three 4"
-					option_four="option_four 4"
-					option_five="option_five 4"
-					currentTab={this.props.currentTab}
-					/>
+			return(
+				<Content
+				title = "title 4"
+				option_one="option_one 4"
+				option_two="option_two 4"
+				option_three="option_three 4"
+				option_four="option_four 4"
+				option_five="option_five 4"
+				currentTab={this.props.currentTab}
+				/>
 				);
 			break; 
 			case 5: 
-				return(
-					<Content
-					title = "title 5"
-					option_one="option_one 5"
-					option_two="option_two 5"
-					option_three="option_three 5"
-					option_four="option_four 5"
-					option_five="option_five 5"
-					currentTab={this.props.currentTab}
-					/>
+			return(
+				<Content
+				title = "title 5"
+				option_one="option_one 5"
+				option_two="option_two 5"
+				option_three="option_three 5"
+				option_four="option_four 5"
+				option_five="option_five 5"
+				currentTab={this.props.currentTab}
+				/>
 				);
 			break;   
 
@@ -163,14 +164,11 @@ var CurrentTabSelect = React.createClass({
 
 var Content = React.createClass({
 
-	handleClickAnswer() {
-		var one    = this.refs.one.checked;
-		var two    = this.refs.two.checked;
-		var three    = this.refs.three.checked;
-		var four    = this.refs.four.checked;
-		var five    = this.refs.five.checked;
+	handleClickAnswer(tab) {
 
-		var classname = document.getElementsByClassName('form-check-input');
+
+		alert("this.props.currentTab = " + this.props.currentTab);
+		var classname = document.getElementsByClassName('question-'+this.props.currentTab);
 		var count_checked = 0;
 		for (var i = 0; i < classname.length; i++) {
 			if(classname[i].checked){
@@ -180,10 +178,19 @@ var Content = React.createClass({
 
 		if (count_checked == 2) {
 			alert("count_checked = " + count_checked);
+			this.props.changeTab(tab);
 		}else{
 			alert("NÃO");
 		}
 
+
+
+		// var one    = this.refs.one.checked;
+		// var two    = this.refs.two.checked;
+		// var three    = this.refs.three.checked;
+		// var four    = this.refs.four.checked;
+		// var five    = this.refs.five.checked;
+		
 		// var id = e.target.getAttribute('data-id');
   //       var state = this.state.data.map(function(d) {
   //           return {
@@ -204,14 +211,15 @@ var Content = React.createClass({
         //     }
         // });
     },
+    unchecked(){
+    	$('input.form-check-input').removeAttr('checked');
+    },
     render() {
-
-
+    	{this.unchecked()};
     	return(
     		<div className="content">
 
     		{this.props.currentTab != null ?
-
     			<div className="question1">
     			<div className="container">
     			<div className="row well">
@@ -233,7 +241,7 @@ var Content = React.createClass({
     			</li>
     			<li className="list-group-item">
     			<label className="form-check-label">
-    			<input ref='three' className={"form-check-input question-"+this.props.currentTab} type="checkbox" name="option" value=""/>
+    			<input ref='three' className={"form-check-input question-"+this.props.currentTab} type="checkbox" name="option" value="0"/>
     			{this.props.option_three}
     			</label>
     			</li>
@@ -312,7 +320,10 @@ var App = React.createClass({
 			tabList={this.state.tabList}
 			changeTab={this.changeTab}
 			/>
-			<CurrentTabSelect currentTab={this.state.currentTab} />
+			<CurrentTabSelect currentTab={this.state.currentTab}
+			tabList={this.state.tabList}
+			changeTab={this.changeTab} />
+
 			</div>
 			);
 	}
